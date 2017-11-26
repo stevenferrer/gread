@@ -43,7 +43,7 @@ func (r *Reader) Uint32() (uint32, error) {
 	return uint32(ui32), nil
 }
 
-//Int32 reads the next line and tries
+//Int64 reads the next line and tries
 //to convert it to int64
 func (r *Reader) Int64() (int64, error) {
 	s, err := r.Line()
@@ -51,12 +51,7 @@ func (r *Reader) Int64() (int64, error) {
 		return 0, err
 	}
 
-	i64, err := strconv.ParseInt(s, 10, 64)
-	if err != nil {
-		return 0, err
-	}
-
-	return i64, nil
+	return strconv.ParseInt(s, 10, 64)
 }
 
 //Uint64 reads the next line and tries
@@ -67,12 +62,7 @@ func (r *Reader) Uint64() (uint64, error) {
 		return 0, err
 	}
 
-	ui64, err := strconv.ParseUint(s, 10, 64)
-	if err != nil {
-		return 0, err
-	}
-
-	return ui64, nil
+	return strconv.ParseUint(s, 10, 64)
 }
 
 //Float32 reads the next line and tries
