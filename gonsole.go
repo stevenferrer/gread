@@ -43,7 +43,7 @@ func (r *Reader) Uint32() (uint32, error) {
 	return uint32(ui32), nil
 }
 
-//Int32 reads the next line and tries
+//Int64 reads the next line and tries
 //to convert it to int64
 func (r *Reader) Int64() (int64, error) {
 	s, err := r.Line()
