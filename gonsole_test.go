@@ -10,7 +10,7 @@ import (
 //TODO: Test for reading from file
 
 func TestInt32InRange(t *testing.T) {
-	s := strconv.FormatInt(math.MaxInt32, 10) + "\n"
+	s := strconv.FormatInt(math.MaxInt32, 10)
 	reader := NewReader(strings.NewReader(s))
 
 	_, err := reader.Int32()
@@ -18,7 +18,7 @@ func TestInt32InRange(t *testing.T) {
 		t.Error("max: expecting nil error got", err)
 	}
 
-	s = strconv.FormatInt(math.MinInt32, 10) + "\n"
+	s = strconv.FormatInt(math.MinInt32, 10)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Int32()
 	if err != nil {
@@ -27,14 +27,14 @@ func TestInt32InRange(t *testing.T) {
 }
 
 func TestInt32OutOfRange(t *testing.T) {
-	s := strconv.FormatInt(math.MaxInt32+1, 10) + "\n"
+	s := strconv.FormatInt(math.MaxInt32+1, 10)
 	reader := NewReader(strings.NewReader(s))
 	_, err := reader.Int32()
 	if err == nil {
 		t.Error("max: expecting non-nil error got ", err)
 	}
 
-	s = strconv.FormatInt(math.MinInt32-1, 10) + "\n"
+	s = strconv.FormatInt(math.MinInt32-1, 10)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Int32()
 	if err == nil {
@@ -43,14 +43,14 @@ func TestInt32OutOfRange(t *testing.T) {
 }
 
 func TestUint32InRange(t *testing.T) {
-	s := strconv.FormatUint(math.MaxUint32, 10) + "\n"
+	s := strconv.FormatUint(math.MaxUint32, 10)
 	reader := NewReader(strings.NewReader(s))
 	_, err := reader.Uint32()
 	if err != nil {
 		t.Error("max: expecting nil error got", err)
 	}
 
-	s = strconv.FormatUint(0, 10) + "\n"
+	s = strconv.FormatUint(0, 10)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Uint32()
 	if err != nil {
@@ -59,7 +59,7 @@ func TestUint32InRange(t *testing.T) {
 }
 
 func TestUint32OutOfRange(t *testing.T) {
-	s := strconv.FormatUint(math.MaxUint32+1, 10) + "\n"
+	s := strconv.FormatUint(math.MaxUint32+1, 10)
 	reader := NewReader(strings.NewReader(s))
 	_, err := reader.Uint32()
 	if err == nil {
@@ -68,7 +68,7 @@ func TestUint32OutOfRange(t *testing.T) {
 }
 
 func TestInt64InRange(t *testing.T) {
-	s := strconv.FormatInt(math.MaxInt64, 10) + "\n"
+	s := strconv.FormatInt(math.MaxInt64, 10)
 	reader := NewReader(strings.NewReader(s))
 
 	_, err := reader.Int64()
@@ -76,7 +76,7 @@ func TestInt64InRange(t *testing.T) {
 		t.Error("max: expecting nil error got", err)
 	}
 
-	s = strconv.FormatInt(math.MinInt64, 10) + "\n"
+	s = strconv.FormatInt(math.MinInt64, 10)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Int64()
 	if err != nil {
@@ -85,7 +85,7 @@ func TestInt64InRange(t *testing.T) {
 }
 
 func TestUint64InRange(t *testing.T) {
-	s := strconv.FormatUint(math.MaxUint64, 10) + "\n"
+	s := strconv.FormatUint(math.MaxUint64, 10)
 	reader := NewReader(strings.NewReader(s))
 
 	_, err := reader.Uint64()
@@ -93,7 +93,7 @@ func TestUint64InRange(t *testing.T) {
 		t.Error("max: expecting nil error got", err)
 	}
 
-	s = strconv.FormatUint(0, 10) + "\n"
+	s = strconv.FormatUint(0, 10)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Uint64()
 	if err != nil {
@@ -102,14 +102,14 @@ func TestUint64InRange(t *testing.T) {
 }
 
 func TestFloat32InRange(t *testing.T) {
-	s := strconv.FormatFloat(math.MaxFloat32, 'E', -1, 32) + "\n"
+	s := strconv.FormatFloat(math.MaxFloat32, 'E', -1, 32)
 	reader := NewReader(strings.NewReader(s))
 	_, err := reader.Float32()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 
-	s = strconv.FormatFloat(math.SmallestNonzeroFloat32, 'E', -1, 32) + "\n"
+	s = strconv.FormatFloat(math.SmallestNonzeroFloat32, 'E', -1, 32)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Float32()
 	if err != nil {
@@ -118,14 +118,14 @@ func TestFloat32InRange(t *testing.T) {
 }
 
 func TestFloat64InRange(t *testing.T) {
-	s := strconv.FormatFloat(math.MaxFloat64, 'E', -1, 64) + "\n"
+	s := strconv.FormatFloat(math.MaxFloat64, 'E', -1, 64)
 	reader := NewReader(strings.NewReader(s))
 	_, err := reader.Float64()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 
-	s = strconv.FormatFloat(math.SmallestNonzeroFloat64, 'E', -1, 64) + "\n"
+	s = strconv.FormatFloat(math.SmallestNonzeroFloat64, 'E', -1, 64)
 	reader = NewReader(strings.NewReader(s))
 	_, err = reader.Float64()
 	if err != nil {

@@ -4,12 +4,11 @@ import (
 	"bufio"
 	"io"
 	"strconv"
-	"strings"
 )
 
 //Reader is a wrapper for *bufio.Reader
 type Reader struct {
-	reader *bufio.Reader
+	scanner *bufio.Scanner
 }
 
 //Int32 reads the next line and tries
@@ -97,17 +96,17 @@ func (r *Reader) Float64() (float64, error) {
 	return f64, nil
 }
 
-//Line reads the next line (terminated by newline) and trims
-//the extra spaces around including newline
-func (r *Reader) Line() (string, error) {
-	s, err := r.reader.ReadString('\n')
-	//remove spaces and extra lines
-	s = strings.TrimSpace(s)
-	return s, err
+//Line reads the next line
+func (r *Reader) Line() (s string, err error) {
+	if r.scanner.Scan() {
+		s = r.scanner.Text()
+	}
+	err = r.scanner.Err()
+	return
 }
 
 //NewReader takes an io.Reader returns a new console reader
 func NewReader(rd io.Reader) *Reader {
-	r := bufio.NewReader(rd)
+	r := bufio.NewScanner(rd)
 	return &Reader{r}
 }
