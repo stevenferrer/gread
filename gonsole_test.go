@@ -145,3 +145,64 @@ func TestLine(t *testing.T) {
 		t.Errorf("%q is not equal to %q", s, s2)
 	}
 }
+
+func TestStack(t *testing.T) {
+	words := &strStack{strings.Fields("the quick")}
+
+	s, _ := words.pop()
+	if s != "the" {
+		t.Errorf("expecting \"the\" got %s", s)
+	}
+
+	s, _ = words.pop()
+	if s != "quick" {
+		t.Errorf("expecting \"quick\" got %s", s)
+	}
+
+	s, err := words.pop()
+	if err == nil {
+		t.Errorf("expecting non-nil error")
+	}
+}
+
+func TestWord(t *testing.T) {
+	str := "first line\nsecond line erf\nthird line\n"
+	lines := strings.Split(str, "\n")
+
+	reader := NewReader(strings.NewReader(str))
+
+	s, err := reader.Line()
+	if err != nil {
+		t.Error("expecting nil error got", err)
+	}
+	if s != lines[0] {
+		t.Errorf("expecting %s got %q", lines[0], s)
+	}
+
+	s, err = reader.Word()
+	if err != nil {
+		t.Error("expecting nil error got", err)
+	}
+
+	if s != "second" {
+		t.Errorf("expecting \"second\" got %q", s)
+	}
+
+	s, err = reader.Word()
+	if err != nil {
+		t.Error("expecting nil error got", err)
+	}
+
+	if s != "line" {
+		t.Errorf("expecting \"line\" got %q", s)
+	}
+
+	s, err = reader.Line()
+	if err != nil {
+		t.Error("expecting nil error got", err)
+	}
+	if s != lines[2] {
+		t.Errorf("expecting %s got %q", lines[2], s)
+	}
+
+}

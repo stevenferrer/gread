@@ -2,13 +2,56 @@ package gonsole
 
 import (
 	"bufio"
+	"errors"
 	"io"
 	"strconv"
+	"strings"
 )
+
+type stringStack interface {
+	push(string)
+	pop() (string, error)
+	clear()
+	len() int
+}
+
+type strStack struct {
+	arr []string
+}
+
+func (st *strStack) len() int {
+	return len(st.arr)
+}
+
+func (st *strStack) clear() {
+	st.arr = []string{}
+}
+
+func (st *strStack) push(s string) {
+	st.arr = append(st.arr, s)
+}
+
+func (st *strStack) pop() (string, error) {
+	if len(st.arr) > 0 {
+		s := st.arr[0]
+
+		if len(st.arr) > 1 {
+			st.arr = st.arr[1:]
+		} else {
+			st.clear()
+		}
+
+		return s, nil
+	}
+
+	return "", errors.New("stringStack: string stack is empty")
+}
 
 //Reader is a wrapper for *bufio.Reader
 type Reader struct {
 	scanner *bufio.Scanner
+
+	words *strStack
 }
 
 //Int32 reads the next line and tries
@@ -105,8 +148,38 @@ func (r *Reader) Line() (s string, err error) {
 	return
 }
 
+func (r *Reader) Word() (string, error) {
+	if r.words.len() > 0 {
+		word, err := r.words.pop()
+		if err != nil {
+			return "", err
+		}
+		return word, nil
+	}
+
+	//word stack is empty, we can a new line
+	line, err := r.Line()
+	if err != nil {
+		return "", err
+	}
+
+	words := strings.Fields(line)
+	if len(words) > 0 {
+		//clear stack
+		r.words.clear()
+		for _, w := range words {
+			r.words.push(w)
+		}
+
+		word, _ := r.words.pop()
+		return word, nil
+	}
+
+	return "", nil
+}
+
 //NewReader takes an io.Reader returns a new console reader
 func NewReader(rd io.Reader) *Reader {
 	r := bufio.NewScanner(rd)
-	return &Reader{r}
+	return &Reader{r, &strStack{[]string{}}}
 }
