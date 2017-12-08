@@ -8,28 +8,15 @@ import (
 	"strings"
 )
 
-type stringStack interface {
-	push(string)
-	pop() (string, error)
-	clear()
-	len() int
-}
+type strStack struct{ arr []string }
 
-type strStack struct {
-	arr []string
-}
+func (st *strStack) len() int { return len(st.arr) }
 
-func (st *strStack) len() int {
-	return len(st.arr)
-}
+func (st *strStack) clear() { st.arr = []string{} }
 
-func (st *strStack) clear() {
-	st.arr = []string{}
-}
+func (st *strStack) push(s string) { st.arr = append(st.arr, s) }
 
-func (st *strStack) push(s string) {
-	st.arr = append(st.arr, s)
-}
+func (st *strStack) pushArray(s ...string) { st.arr = append(st.arr, s...) }
 
 func (st *strStack) pop() (string, error) {
 	if len(st.arr) > 0 {
@@ -57,7 +44,7 @@ type Reader struct {
 //Int32 reads the next line and tries
 //to convert it to int32
 func (r *Reader) Int32() (int32, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -73,7 +60,7 @@ func (r *Reader) Int32() (int32, error) {
 //Uint32 reads the next line and tries
 //to convert it to uint32
 func (r *Reader) Uint32() (uint32, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -88,7 +75,7 @@ func (r *Reader) Uint32() (uint32, error) {
 //Int64 reads the next line and tries
 //to convert it to int64
 func (r *Reader) Int64() (int64, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -99,7 +86,7 @@ func (r *Reader) Int64() (int64, error) {
 //Uint64 reads the next line and tries
 //to converts it to uint64
 func (r *Reader) Uint64() (uint64, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -110,7 +97,7 @@ func (r *Reader) Uint64() (uint64, error) {
 //Float32 reads the next line and tries
 //to convert it to float32
 func (r *Reader) Float32() (float32, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -126,7 +113,7 @@ func (r *Reader) Float32() (float32, error) {
 //Float64 reads the next line and tries
 //to convert it to float64
 func (r *Reader) Float64() (float64, error) {
-	s, err := r.Line()
+	s, err := r.Word()
 	if err != nil {
 		return 0, err
 	}
@@ -167,9 +154,7 @@ func (r *Reader) Word() (string, error) {
 	if len(words) > 0 {
 		//clear stack
 		r.words.clear()
-		for _, w := range words {
-			r.words.push(w)
-		}
+		r.words.pushArray(words...)
 
 		word, _ := r.words.pop()
 		return word, nil
