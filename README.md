@@ -45,6 +45,19 @@ func main() {
     f64, err := reader.Float64()
     checkErr(err)
     fmt.Printf("%T is %f\n", f64, f64)
+
+    fmt.Println("Enter two word line: ")
+    w, err := reader.Word()
+    checkErr(err)
+    fmt.Printf("First word is %q\n", w)
+    w, err = reader.Word()
+    checkErr(err)
+    fmt.Printf("Second word is %q\n", w)
+
+    fmt.Println("Enter a line: ")
+    l, err := reader.Line()
+    checkErr(err)
+    fmt.Printf("Line is %q\n", l)
 }
 
 func checkErr(err error) {
