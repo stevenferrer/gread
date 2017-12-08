@@ -34,15 +34,15 @@ func (st *strStack) pop() (string, error) {
 	return "", errors.New("stringStack: string stack is empty")
 }
 
-//Reader is a wrapper for *bufio.Reader
+//Reader is a wrapper for *bufio.Scanner
 type Reader struct {
 	scanner *bufio.Scanner
 
+	//words will contain the words in a line
 	words *strStack
 }
 
-//Int32 reads the next line and tries
-//to convert it to int32
+//Int32 reads the next word and tries to convert it to int32
 func (r *Reader) Int32() (int32, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -57,8 +57,7 @@ func (r *Reader) Int32() (int32, error) {
 	return int32(i32), nil
 }
 
-//Uint32 reads the next line and tries
-//to convert it to uint32
+//Uint32 reads the next word and tries to convert it to uint32
 func (r *Reader) Uint32() (uint32, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -72,8 +71,7 @@ func (r *Reader) Uint32() (uint32, error) {
 	return uint32(ui32), nil
 }
 
-//Int64 reads the next line and tries
-//to convert it to int64
+//Int64 reads the next word and tries to convert it to int64
 func (r *Reader) Int64() (int64, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -83,8 +81,7 @@ func (r *Reader) Int64() (int64, error) {
 	return strconv.ParseInt(s, 10, 64)
 }
 
-//Uint64 reads the next line and tries
-//to converts it to uint64
+//Uint64 reads the next word and tries to converts it to uint64
 func (r *Reader) Uint64() (uint64, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -94,8 +91,7 @@ func (r *Reader) Uint64() (uint64, error) {
 	return strconv.ParseUint(s, 10, 64)
 }
 
-//Float32 reads the next line and tries
-//to convert it to float32
+//Float32 reads the next word and tries to convert it to float32
 func (r *Reader) Float32() (float32, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -110,8 +106,7 @@ func (r *Reader) Float32() (float32, error) {
 	return float32(f32), nil
 }
 
-//Float64 reads the next line and tries
-//to convert it to float64
+//Float64 reads the next word and tries to convert it to float64
 func (r *Reader) Float64() (float64, error) {
 	s, err := r.Word()
 	if err != nil {
@@ -135,6 +130,7 @@ func (r *Reader) Line() (s string, err error) {
 	return
 }
 
+//Word reads the next word
 func (r *Reader) Word() (string, error) {
 	if r.words.len() > 0 {
 		word, err := r.words.pop()
@@ -152,7 +148,6 @@ func (r *Reader) Word() (string, error) {
 
 	words := strings.Fields(line)
 	if len(words) > 0 {
-		//clear stack
 		r.words.clear()
 		r.words.pushArray(words...)
 
@@ -163,7 +158,7 @@ func (r *Reader) Word() (string, error) {
 	return "", nil
 }
 
-//NewReader takes an io.Reader returns a new console reader
+//NewReader takes an io.Reader returns a new `gonsole.Reader`
 func NewReader(rd io.Reader) *Reader {
 	r := bufio.NewScanner(rd)
 	return &Reader{r, &strStack{[]string{}}}
