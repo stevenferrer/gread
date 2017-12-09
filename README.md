@@ -1,6 +1,14 @@
 # gonsole
 Golang package for reading inputs from console, file, and others that implements `io.Reader`
 
+## Installing
+
+`$ go get -v -u github.com/steven-ferrer/gonsole `
+
+## GoDoc
+
+[github.com/steven-ferrer/gonsole](https://godoc.org/github.com/steven-ferrer/gonsole)
+
 ## Example
 
 ```go
