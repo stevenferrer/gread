@@ -20,13 +20,8 @@ func (st *strStack) pushArray(s ...string) { st.arr = append(st.arr, s...) }
 
 func (st *strStack) pop() (string, error) {
 	if len(st.arr) > 0 {
-		s := st.arr[0]
-
-		if len(st.arr) > 1 {
-			st.arr = st.arr[1:]
-		} else {
-			st.clear()
-		}
+		var s string
+		s, st.arr = st.arr[0], st.arr[1:]
 
 		return s, nil
 	}
