@@ -32,7 +32,8 @@ func main() {
         math.MaxFloat32,
         math.MaxFloat64,
     )
-
+    // strings.NewReader(s) can be replaced with
+    // os.Stdin for reading from stdin
     reader := gonsole.NewReader(strings.NewReader(s))
     i32, err := reader.Int32()
     checkErr(err)
