@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/steven-ferrer/gonsole)](https://goreportcard.com/report/github.com/steven-ferrer/gonsole) [![godocs](https://godoc.org/github.com/steven-ferrer/gonsole?status.svg)](https://godoc.org/github.com/steven-ferrer/gonsole) 
 # gonsole
 Golang package for reading inputs from console, file, and others that implements `io.Reader`
 
