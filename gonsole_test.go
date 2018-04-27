@@ -159,7 +159,7 @@ func TestStack(t *testing.T) {
 		t.Errorf("expecting \"quick\" got %s", s)
 	}
 
-	s, err := words.pop()
+	_, err := words.pop()
 	if err == nil {
 		t.Errorf("expecting non-nil error")
 	}
