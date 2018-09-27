@@ -9,134 +9,134 @@ import (
 
 //TODO: Test for reading from file
 
-func TestInt32InRange(t *testing.T) {
+func TestNextInt32InRange(t *testing.T) {
 	s := strconv.FormatInt(math.MaxInt32, 10)
 	reader := NewReader(strings.NewReader(s))
 
-	_, err := reader.Int32()
+	_, err := reader.NextInt32()
 	if err != nil {
 		t.Error("max: expecting nil error got", err)
 	}
 
 	s = strconv.FormatInt(math.MinInt32, 10)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Int32()
+	_, err = reader.NextInt32()
 	if err != nil {
 		t.Error("min: expecting nil error got", err)
 	}
 }
 
-func TestInt32OutOfRange(t *testing.T) {
+func TestNextInt32OutOfRange(t *testing.T) {
 	s := strconv.FormatInt(math.MaxInt32+1, 10)
 	reader := NewReader(strings.NewReader(s))
-	_, err := reader.Int32()
+	_, err := reader.NextInt32()
 	if err == nil {
 		t.Error("max: expecting non-nil error got ", err)
 	}
 
 	s = strconv.FormatInt(math.MinInt32-1, 10)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Int32()
+	_, err = reader.NextInt32()
 	if err == nil {
 		t.Error("min: expecting non-nil error got ", err)
 	}
 }
 
-func TestUint32InRange(t *testing.T) {
+func TestNextUint32InRange(t *testing.T) {
 	s := strconv.FormatUint(math.MaxUint32, 10)
 	reader := NewReader(strings.NewReader(s))
-	_, err := reader.Uint32()
+	_, err := reader.NextUint32()
 	if err != nil {
 		t.Error("max: expecting nil error got", err)
 	}
 
 	s = strconv.FormatUint(0, 10)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Uint32()
+	_, err = reader.NextUint32()
 	if err != nil {
 		t.Error("min: expecting nil error got", err)
 	}
 }
 
-func TestUint32OutOfRange(t *testing.T) {
+func TestNextUint32OutOfRange(t *testing.T) {
 	s := strconv.FormatUint(math.MaxUint32+1, 10)
 	reader := NewReader(strings.NewReader(s))
-	_, err := reader.Uint32()
+	_, err := reader.NextUint32()
 	if err == nil {
 		t.Error("Expecting non-nil error got ", err)
 	}
 }
 
-func TestInt64InRange(t *testing.T) {
+func TestNextInt64InRange(t *testing.T) {
 	s := strconv.FormatInt(math.MaxInt64, 10)
 	reader := NewReader(strings.NewReader(s))
 
-	_, err := reader.Int64()
+	_, err := reader.NextInt64()
 	if err != nil {
 		t.Error("max: expecting nil error got", err)
 	}
 
 	s = strconv.FormatInt(math.MinInt64, 10)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Int64()
+	_, err = reader.NextInt64()
 	if err != nil {
 		t.Error("min: expecting nil error got", err)
 	}
 }
 
-func TestUint64InRange(t *testing.T) {
+func TestNextUint64InRange(t *testing.T) {
 	s := strconv.FormatUint(math.MaxUint64, 10)
 	reader := NewReader(strings.NewReader(s))
 
-	_, err := reader.Uint64()
+	_, err := reader.NextUint64()
 	if err != nil {
 		t.Error("max: expecting nil error got", err)
 	}
 
 	s = strconv.FormatUint(0, 10)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Uint64()
+	_, err = reader.NextUint64()
 	if err != nil {
 		t.Error("min: expecting nil error got", err)
 	}
 }
 
-func TestFloat32InRange(t *testing.T) {
+func TestNextFloat32InRange(t *testing.T) {
 	s := strconv.FormatFloat(math.MaxFloat32, 'E', -1, 32)
 	reader := NewReader(strings.NewReader(s))
-	_, err := reader.Float32()
+	_, err := reader.NextFloat32()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 
 	s = strconv.FormatFloat(math.SmallestNonzeroFloat32, 'E', -1, 32)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Float32()
+	_, err = reader.NextFloat32()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 }
 
-func TestFloat64InRange(t *testing.T) {
+func TestNextFloat64InRange(t *testing.T) {
 	s := strconv.FormatFloat(math.MaxFloat64, 'E', -1, 64)
 	reader := NewReader(strings.NewReader(s))
-	_, err := reader.Float64()
+	_, err := reader.NextFloat64()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 
 	s = strconv.FormatFloat(math.SmallestNonzeroFloat64, 'E', -1, 64)
 	reader = NewReader(strings.NewReader(s))
-	_, err = reader.Float64()
+	_, err = reader.NextFloat64()
 	if err != nil {
 		t.Error("expecting a nil error got", err)
 	}
 }
 
-func TestLine(t *testing.T) {
+func TestNextLine(t *testing.T) {
 	s := "The quick brown fox jumps over the lazy dog.\n"
 	reader := NewReader(strings.NewReader(s))
-	s2, err := reader.Line()
+	s2, err := reader.NextLine()
 	if err != nil {
 		t.Error("expecting nil error got", err)
 	}
@@ -146,7 +146,7 @@ func TestLine(t *testing.T) {
 	}
 }
 
-func TestStack(t *testing.T) {
+func TestStringStack(t *testing.T) {
 	words := &strStack{strings.Fields("the quick")}
 
 	s, _ := words.pop()
@@ -165,13 +165,13 @@ func TestStack(t *testing.T) {
 	}
 }
 
-func TestWord(t *testing.T) {
+func TestNextWord(t *testing.T) {
 	str := "first line\nsecond line erf\nthird line\n"
 	lines := strings.Split(str, "\n")
 
 	reader := NewReader(strings.NewReader(str))
 
-	s, err := reader.Line()
+	s, err := reader.NextLine()
 	if err != nil {
 		t.Error("expecting nil error got", err)
 	}
@@ -179,7 +179,7 @@ func TestWord(t *testing.T) {
 		t.Errorf("expecting %s got %q", lines[0], s)
 	}
 
-	s, err = reader.Word()
+	s, err = reader.NextWord()
 	if err != nil {
 		t.Error("expecting nil error got", err)
 	}
@@ -188,7 +188,7 @@ func TestWord(t *testing.T) {
 		t.Errorf("expecting \"second\" got %q", s)
 	}
 
-	s, err = reader.Word()
+	s, err = reader.NextWord()
 	if err != nil {
 		t.Error("expecting nil error got", err)
 	}
@@ -197,7 +197,7 @@ func TestWord(t *testing.T) {
 		t.Errorf("expecting \"line\" got %q", s)
 	}
 
-	s, err = reader.Line()
+	s, err = reader.NextLine()
 	if err != nil {
 		t.Error("expecting nil error got", err)
 	}
