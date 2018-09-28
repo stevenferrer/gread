@@ -62,7 +62,7 @@ func main() {
     w, err := reader.NextWord()
     checkErr(err)
     fmt.Printf("\nword1 is %q\n", w)
-    w, err = reader.Word()
+    w, err = reader.NextWord()
     checkErr(err)
     fmt.Printf("word2 is %q\n", w)
 
