@@ -1,11 +1,13 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/steven-ferrer/gonsole)](https://goreportcard.com/report/github.com/steven-ferrer/gonsole) [![godocs](https://godoc.org/github.com/steven-ferrer/gonsole?status.svg)](https://godoc.org/github.com/steven-ferrer/gonsole) 
-[![Sourcegraph](https://sourcegraph.com/github.com/steven-ferrer/gonsole/-/badge.svg)](https://sourcegraph.com/github.com//steven-ferrer/gonsole?badge)
-# gonsole
+[![Go Report Card](https://goreportcard.com/badge/github.com/steven-ferrer/gread)](https://goreportcard.com/report/github.com/steven-ferrer/gread) [![godocs](https://godoc.org/github.com/steven-ferrer/gread?status.svg)](https://godoc.org/github.com/steven-ferrer/gread) 
+[![Sourcegraph](https://sourcegraph.com/github.com/steven-ferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com//steven-ferrer/gread?badge)
+# gonsole is now 'gread'
+
+# gread (pronounced as 'greed')
 Golang package for reading inputs from stdin, file, and others that implements `io.Reader`
 
 ## Installing
 
-`$ go get -v -u github.com/steven-ferrer/gonsole `
+`$ go get -v -u github.com/steven-ferrer/gread `
 
 ## Example
 
@@ -18,7 +20,7 @@ import (
     "math"
     "strings"
 
-    "github.com/steven-ferrer/gonsole"
+    "github.com/steven-ferrer/gread"
 )
 
 func main() {
@@ -31,10 +33,10 @@ func main() {
         math.MaxFloat64,
     )
     
-    // initialize a new instance of `gonsole.Reader`
-    reader := gonsole.NewReader(strings.NewReader(s))
+    // initialize a new instance of `gread.Reader`
+    reader := gread.NewReader(strings.NewReader(s))
     //or if you want to read from stdin
-    // reader := gonsole.NewReader(os.Stdin)
+    // reader := gread.NewReader(os.Stdin)
     
     i32, err := reader.NextInt32()
     checkErr(err)

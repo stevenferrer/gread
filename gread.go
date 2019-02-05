@@ -1,4 +1,4 @@
-package gonsole
+package gread
 
 import (
 	"bufio"
@@ -153,7 +153,7 @@ func (r *Reader) NextWord() (string, error) {
 	return "", nil
 }
 
-//NewReader takes an io.Reader returns a new `gonsole.Reader`
+//NewReader takes an io.Reader returns a new `gread.Reader`
 func NewReader(rd io.Reader) *Reader {
 	r := bufio.NewScanner(rd)
 	return &Reader{r, &strStack{[]string{}}}

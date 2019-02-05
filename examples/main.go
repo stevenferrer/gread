@@ -6,7 +6,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/steven-ferrer/gonsole"
+	"github.com/steven-ferrer/gread"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		math.MaxFloat64,
 	)
 
-	reader := gonsole.NewReader(strings.NewReader(s))
+	reader := gread.NewReader(strings.NewReader(s))
 	i32, err := reader.NextInt32()
 	checkErr(err)
 	fmt.Printf("%T is %d\n\n", i32, i32)
