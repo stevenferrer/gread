@@ -9,7 +9,7 @@ Golang package for reading inputs from stdin, file, and others that implements `
 
 ## Installing
 
-`$ go get -v -u github.com/steven-ferrer/gread `
+`$ go get -v -u github.com/stevenferrer/gread `
 
 ## Example
 
@@ -22,7 +22,7 @@ import (
     "math"
     "strings"
 
-    "github.com/steven-ferrer/gread"
+    "github.com/stevenferrer/gread"
 )
 
 func main() {
