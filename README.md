@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/steven-ferrer/gread.svg?style=svg)](https://circleci.com/gh/steven-ferrer/gread)
-[![Go Report Card](https://goreportcard.com/badge/github.com/steven-ferrer/gread)](https://goreportcard.com/report/github.com/steven-ferrer/gread) [![godocs](https://godoc.org/github.com/steven-ferrer/gread?status.svg)](https://godoc.org/github.com/steven-ferrer/gread) 
-[![Sourcegraph](https://sourcegraph.com/github.com/steven-ferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com//steven-ferrer/gread?badge)
+[![CircleCI](https://circleci.com/gh/stevenferrer/gread.svg?style=svg)](https://circleci.com/gh/stevenferrer/gread)
+[![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) 
+[![Sourcegraph](https://sourcegraph.com/github.com/stevenferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com//stevenferrer/gread?badge)
 
 # gonsole is now 'gread'
 
