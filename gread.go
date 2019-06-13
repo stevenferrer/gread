@@ -2,10 +2,11 @@ package gread
 
 import (
 	"bufio"
-	"errors"
 	"io"
 	"strconv"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 type strStack struct{ arr []string }
@@ -118,11 +119,13 @@ func (r *Reader) NextFloat64() (float64, error) {
 
 //NextLine reads the next line
 func (r *Reader) NextLine() (s string, err error) {
-	if r.scanner.Scan() {
-		s = r.scanner.Text()
+	hasNext := r.scanner.Scan()
+
+	if !hasNext {
+		return "", io.EOF
 	}
-	err = r.scanner.Err()
-	return
+
+	return r.scanner.Text(), r.scanner.Err()
 }
 
 //NextWord reads the next word

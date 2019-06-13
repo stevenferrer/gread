@@ -6,7 +6,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/steven-ferrer/gread"
+	"github.com/stevenferrer/gread"
 )
 
 func main() {
