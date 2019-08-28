@@ -161,3 +161,11 @@ func NewReader(rd io.Reader) *Reader {
 	r := bufio.NewScanner(rd)
 	return &Reader{r, &strStack{[]string{}}}
 }
+
+// NewReaderWithBufferSize takes an io reader and buffer size and a new `gread.Reader`
+func NewReaderWithBufferSize(rd io.Reader, bufferSize int) *Reader {
+	r := bufio.NewScanner(rd)
+	buf := make([]byte, 0, bufio.MaxScanTokenSize)
+	r.Buffer(buf, bufferSize)
+	return &Reader{r, &strStack{[]string{}}}
+}

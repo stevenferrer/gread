@@ -1,6 +1,7 @@
 package gread
 
 import (
+	"bufio"
 	"math"
 	"strconv"
 	"strings"
@@ -205,4 +206,30 @@ func TestNextWord(t *testing.T) {
 		t.Errorf("expecting %s got %q", lines[2], s)
 	}
 
+}
+
+func TestLongLinesThatExceedsDefaultBuffer(t *testing.T) {
+
+	strs := []string{}
+
+	for i := 0; i < bufio.MaxScanTokenSize+64; i++ {
+		strs = append(strs, "abcd")
+	}
+
+	b := strings.NewReader(strings.Join(strs, ""))
+	reader := NewReader(b)
+
+	_, err := reader.NextLine()
+	if err == nil {
+		t.Error("expecting error but got", err)
+	}
+
+	bufferSize := 1024 * 1024
+	b = strings.NewReader(strings.Join(strs, ""))
+	reader = NewReaderWithBufferSize(b, bufferSize)
+
+	_, err = reader.NextLine()
+	if err != nil {
+		t.Error("expecting nil error but got", err)
+	}
 }
