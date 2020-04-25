@@ -2,9 +2,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) 
 [![Sourcegraph](https://sourcegraph.com/github.com/stevenferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com//stevenferrer/gread?badge)
 
-# gonsole is now 'gread'
-
-# gread (pronounced as 'greed')
+# gread
 Golang package for reading inputs from stdin, file, and others that implements `io.Reader`
 
 ## Installing
