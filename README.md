@@ -7,7 +7,9 @@ Go module for reading from anything that implements `io.Reader`
 
 ## Installing
 
-`$ go get -v -u github.com/stevenferrer/gread `
+```console
+$ go get -v -u github.com/stevenferrer/gread
+```
 
 ## Example
 
