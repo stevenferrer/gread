@@ -1,9 +1,9 @@
-[![CircleCI](https://circleci.com/gh/stevenferrer/gread.svg?style=svg)](https://circleci.com/gh/stevenferrer/gread)
-[![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) 
-[![Sourcegraph](https://sourcegraph.com/github.com/stevenferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com//stevenferrer/gread?badge)
-
 # gread
-Golang package for reading inputs from stdin, file, and others that implements `io.Reader`
+
+[![CircleCI](https://circleci.com/gh/stevenferrer/gread.svg?style=shield)](https://circleci.com/gh/stevenferrer/gread)
+[![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) 
+
+Go module for reading from anything that implements `io.Reader`
 
 ## Installing
 
