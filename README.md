@@ -1,6 +1,7 @@
 # gread
 
-[![CircleCI](https://circleci.com/gh/stevenferrer/gread.svg?style=shield)](https://circleci.com/gh/stevenferrer/gread)
+![Github Actions](https://github.com/sf9v/gread/workflows/test/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/sf9v/esmaq/badge.svg?branch=master)](https://coveralls.io/github/sf9v/gread?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) 
 
 Go module for reading from anything that implements `io.Reader`
