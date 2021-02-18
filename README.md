@@ -3,6 +3,8 @@
 ![Github Actions](https://github.com/sf9v/gread/workflows/test/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/sf9v/gread/badge.svg?branch=master)](https://coveralls.io/github/sf9v/gread?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sf9v/gread)](https://goreportcard.com/report/github.com/sf9v/gread) [![godocs](https://godoc.org/github.com/sf9v/gread?status.svg)](https://godoc.org/github.com/sf9v/gread) 
+[![Sourcegraph](https://sourcegraph.com/github.com/sf9v/gread/-/badge.svg)](https://sourcegraph.com/github.com/sf9v/gread?badge)
+
 
 Go module for reading from anything that implements `io.Reader`
 
