@@ -1,9 +1,4 @@
-# gread
-
-![Github Actions](https://github.com/sf9v/gread/workflows/test/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/sf9v/gread/badge.svg?branch=master)](https://coveralls.io/github/sf9v/gread?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sf9v/gread)](https://goreportcard.com/report/github.com/sf9v/gread) [![godocs](https://godoc.org/github.com/sf9v/gread?status.svg)](https://godoc.org/github.com/sf9v/gread) 
-[![Sourcegraph](https://sourcegraph.com/github.com/sf9v/gread/-/badge.svg)](https://sourcegraph.com/github.com/sf9v/gread?badge)
+# gread [![godocs](https://godoc.org/github.com/sf9v/gread?status.svg)](https://godoc.org/github.com/sf9v/gread) ![Github Actions](https://github.com/sf9v/gread/workflows/test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/sf9v/gread/badge.svg?branch=master)](https://coveralls.io/github/sf9v/gread?branch=master) [![Go Report Card](https://goreportcard.com/badge/github.com/sf9v/gread)](https://goreportcard.com/report/github.com/sf9v/gread) [![Sourcegraph](https://sourcegraph.com/github.com/sf9v/gread/-/badge.svg)](https://sourcegraph.com/github.com/sf9v/gread?badge)
 
 
 Go module for reading from anything that implements `io.Reader`
@@ -11,7 +6,7 @@ Go module for reading from anything that implements `io.Reader`
 ## Installing
 
 ```console
-$ go get -v -u github.com/sf9v/gread
+$ go get github.com/sf9v/gread
 ```
 
 ## Example
@@ -38,10 +33,8 @@ func main() {
         math.MaxFloat64,
     )
     
-    // initialize a new instance of `gread.Reader`
+    // Create a new `gread.Reader`
     reader := gread.NewReader(strings.NewReader(s))
-    //or if you want to read from stdin
-    // reader := gread.NewReader(os.Stdin)
     
     i32, err := reader.NextInt32()
     checkErr(err)
