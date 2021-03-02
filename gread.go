@@ -9,27 +9,6 @@ import (
 	"github.com/pkg/errors"
 )
 
-type strStack struct{ arr []string }
-
-func (st *strStack) len() int { return len(st.arr) }
-
-func (st *strStack) clear() { st.arr = []string{} }
-
-func (st *strStack) push(s string) { st.arr = append(st.arr, s) }
-
-func (st *strStack) pushArray(s ...string) { st.arr = append(st.arr, s...) }
-
-func (st *strStack) pop() (string, error) {
-	if len(st.arr) > 0 {
-		var s string
-		s, st.arr = st.arr[0], st.arr[1:]
-
-		return s, nil
-	}
-
-	return "", errors.New("stringStack: string stack is empty")
-}
-
 //Reader is a wrapper for *bufio.Scanner
 type Reader struct {
 	scanner *bufio.Scanner
@@ -147,7 +126,7 @@ func (r *Reader) NextWord() (string, error) {
 	words := strings.Fields(line)
 	if len(words) > 0 {
 		r.words.clear()
-		r.words.pushArray(words...)
+		r.words.push(words...)
 
 		word, _ := r.words.pop()
 		return word, nil
@@ -168,4 +147,23 @@ func NewReaderWithBufferSize(rd io.Reader, bufferSize int) *Reader {
 	buf := make([]byte, 0, bufio.MaxScanTokenSize)
 	r.Buffer(buf, bufferSize)
 	return &Reader{r, &strStack{[]string{}}}
+}
+
+type strStack struct{ arr []string }
+
+func (st *strStack) len() int { return len(st.arr) }
+
+func (st *strStack) clear() { st.arr = []string{} }
+
+func (st *strStack) push(s ...string) { st.arr = append(st.arr, s...) }
+
+func (st *strStack) pop() (string, error) {
+	if len(st.arr) > 0 {
+		var s string
+		s, st.arr = st.arr[0], st.arr[1:]
+
+		return s, nil
+	}
+
+	return "", errors.New("stack is empty")
 }

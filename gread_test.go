@@ -8,8 +8,6 @@ import (
 	"testing"
 )
 
-//TODO: Test for reading from file
-
 func TestNextInt32InRange(t *testing.T) {
 	s := strconv.FormatInt(math.MaxInt32, 10)
 	reader := NewReader(strings.NewReader(s))
