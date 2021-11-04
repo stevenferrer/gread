@@ -1,4 +1,4 @@
-# gread [![godocs](https://godoc.org/github.com/sf9v/gread?status.svg)](https://godoc.org/github.com/sf9v/gread) ![Github Actions](https://github.com/sf9v/gread/workflows/test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/sf9v/gread/badge.svg?branch=main)](https://coveralls.io/github/sf9v/gread?branch=main) [![Go Report Card](https://goreportcard.com/badge/github.com/sf9v/gread)](https://goreportcard.com/report/github.com/sf9v/gread) [![Sourcegraph](https://sourcegraph.com/github.com/sf9v/gread/-/badge.svg)](https://sourcegraph.com/github.com/sf9v/gread?badge)
+# gread [![godocs](https://godoc.org/github.com/stevenferrer/gread?status.svg)](https://godoc.org/github.com/stevenferrer/gread) ![Github Actions](https://github.com/stevenferrer/gread/workflows/test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/stevenferrer/gread/badge.svg?branch=main)](https://coveralls.io/github/stevenferrer/gread?branch=main) [![Go Report Card](https://goreportcard.com/badge/github.com/stevenferrer/gread)](https://goreportcard.com/report/github.com/stevenferrer/gread) [![Sourcegraph](https://sourcegraph.com/github.com/stevenferrer/gread/-/badge.svg)](https://sourcegraph.com/github.com/stevenferrer/gread?badge)
 
 
 Go module for reading from anything that implements `io.Reader`
@@ -6,7 +6,7 @@ Go module for reading from anything that implements `io.Reader`
 ## Installing
 
 ```console
-$ go get github.com/sf9v/gread
+$ go get github.com/stevenferrer/gread
 ```
 
 ## Example
@@ -20,7 +20,7 @@ import (
     "math"
     "strings"
 
-    "github.com/sf9v/gread"
+    "github.com/stevenferrer/gread"
 )
 
 func main() {

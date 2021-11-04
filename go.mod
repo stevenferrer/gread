@@ -1,4 +1,4 @@
-module github.com/sf9v/gread
+module github.com/stevenferrer/gread
 
 go 1.14
 
